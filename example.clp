@@ -32,3 +32,12 @@
         (sintomas dolor)
     )
 )
+
+; flu 37 < temperatura < 38 y tos
+
+(defrule restfriado
+    (paciente (nombre ?n) (temperatura ?t) (sintomas $? tos $?))
+    (test (and (> ?t 37) (<= ?t 38)))
+    =>
+    (printout t ?n "tiene sintomas de refriado" crlf)
+)
