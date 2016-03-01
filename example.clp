@@ -1,7 +1,7 @@
 (deftemplate paciente
     (slot nombre)
     (slot temperatura)
-    (slot sintomas)
+    (multislot sintomas)
 )
 
 (deffacts pacientes
@@ -13,12 +13,22 @@
     
     (paciente 
         (nombre ana)
-        (temperaura 39)
+        (temperatura 39)
         (sintomas tos)
     )
     (paciente
         (nombre ana)
         (temperatura 37.2)
-        (sintomas tos)
+        (sintomas tos dolor)
+    )
+    (paciente
+        (nombre jose)
+        (temperatura 38.8)
+        (sintomas dolor)
+    )
+    (paciente
+        (nombre isabel)
+        (temperatura 37)
+        (sintomas dolor)
     )
 )
