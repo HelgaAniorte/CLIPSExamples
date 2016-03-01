@@ -55,14 +55,14 @@
 )
 
 ; flu temp > 38 tos & congestion
-(defrule gripe
-    (paciente (nombre ?n) (temperatura ?t) (sintomas $?s))
-    (test  (> ?t 38) )
-    (test (member$ tos $?s))
-    (test (member$ congestion $?s))
-    =>
-    (printout t ?n "tiene sintomas de gripe" crlf)
-)
+;(defrule gripe
+;    (paciente (nombre ?n) (temperatura ?t) (sintomas $?s))
+;    (test  (> ?t 38) )
+;    (test (member$ tos $?s))
+;    (test (member$ congestion $?s))
+;    =>
+;    (printout t ?n "tiene sintomas de gripe" crlf)
+;)
 
 ;only women
 (defrule paciente_mujer
@@ -83,4 +83,13 @@
     (paciente (nombre ?n) (color_pelo ~negro|~marron))
     =>
     (printout t ?n "tiene pelo oscuro" crlf)
+)
+
+(defrule gripe
+    (paciente 
+        (nombre ?n) 
+        (temperatura ?t&:(> ?t 38))
+        (sintomas $?s&:(and (member$ tos $?s) (member$ congestion $?s))))
+    =>
+    (printout t ?n "tiene sintomas de gripe" crlf)
 )
